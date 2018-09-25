@@ -33,7 +33,24 @@ As such, it implements both the standard token methods and the standard token ev
 
 ### Methods
 
-Note that these methods can only be executed by the token owner.
+Note that these methods can only be executed by the token owner. If you are calling these methods in a console (command line) the token owner is not implied. If you want to execute the method and explicitly provide the token owner, please use the following syntax.
+
+```
+deployedContract.issue(address _to, uint256 _amount, {from:address _owner});
+```
+
+```
+deployedContract.issue("0xf7fca0066bde97e5509591afc9f669991e03c25c",10000000000, {from:"0xcbd78e5779fee36b87c58276ff86fb444a574092"});
+```
+This syntax can also be used on methods which require no arguments, as shown below.
+
+```
+deployedContract.acceptOwnership({from:address _owner});
+```
+
+```
+deployedContract.acceptOwnership({from:"0xcbd78e5779fee36b87c58276ff86fb444a574092"});
+```
 
 **issue**
 ```cs
